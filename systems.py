@@ -142,7 +142,7 @@ if uploaded_file is not None:
 
     st.subheader('**Results**')
 
-    st.write(dataframe)
+    #st.write(dataframe)
 
     num = 0 + 1
     for x in range(2, len(difpos)):
@@ -228,7 +228,7 @@ if uploaded_file is not None:
             segment.append(0)
 
     dataframe['Segment'] = segment
-    st.write(dataframe)
+    #st.write(dataframe)
 
     dfFilter = pd.DataFrame()
     dfFilter['pos(in)'] = posFilter
