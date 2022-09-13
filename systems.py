@@ -5,23 +5,23 @@ from datetime import date
 import numpy as np
 import math
 
-st.header('**Sucker Rod Pump **')
+st.header('**Sucker Rod Pump**')
 
 wellName = st.selectbox('Well:', ('A'))
 
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 method = col1.selectbox('Method:',
                         ('SRP', ''))
 surfaceUnit = col2.selectbox('Surface unit:', ('M-640D-305-168', ''))
 
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 opeStart_d = col1.date_input(
     "Operations started:", datetime.date(2019, 6, 26))
 col2.text_input('Seating nipple at (ft):', value='5060')
 
 downholePump = st.selectbox('Downhole pump:', ('API 25-200-RWBC-24-4-H0', ''))
 
-col1, col2, col3 = st.beta_columns(3)
+col1, col2, col3 = st.columns(3)
 rodsCent_opt = col1.selectbox('Rods Centralizers:', ('No', 'Yes'))
 tubA_opt = col2.selectbox('Tubing anchored:', ('Yes', 'No'))
 fit = col3.text_input('Fit (mils):', value='3')
@@ -43,7 +43,7 @@ st.table(df)
 
 SurfaceMaxStroke = int(int(surfaceUnit[-3:])/12)
 
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 
 col1.info('Surface max. Stroke: ' + str(SurfaceMaxStroke))
 valueMatch = downholePump[7:10]
@@ -55,7 +55,7 @@ col2.info('Plunger length: ' + str(int(downholePump[19:20])))
 
 st.subheader('**Card Analysis parameters**')
 
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 
 poundPointLB = col1.text_input(
     'Pound point look back:', value=10)
@@ -63,7 +63,7 @@ poundPointLB = col1.text_input(
 poundGasCA = col2.text_input(
     'Pound/Gas change angle (degrees):', value=85)
 
-col1, col2, col3 = st.beta_columns(3)
+col1, col2, col3 = st.columns(3)
 
 MinPumpFillage = col1.text_input(
     'Min. Pump Fillage:', value=0.8)
@@ -183,7 +183,7 @@ if uploaded_file is not None:
 
     st.write(perDF)
 
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
 
     # Estimate of 'Strokes'
     StrokeBottom = perDF['Pos.'][len(percentiles)-1]
@@ -250,7 +250,7 @@ if uploaded_file is not None:
 
     st.subheader('**Pound curve analysis**')
 
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
 
     startPoint = dataframe['pos(in)'][row_sp]
     col1.info('Start point: ' + str(startPoint))
@@ -282,7 +282,7 @@ if uploaded_file is not None:
     elif pumpFillage < float(MinPumpFillage) and incidenceAngle > float(poundGasCA):
         AbsenceOfFluidPound = int(0)
 
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
 
     col1.info('Absence of Fluid Pound: ' + str(AbsenceOfFluidPound))
 
