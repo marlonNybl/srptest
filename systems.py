@@ -5,7 +5,7 @@ from datetime import date
 import numpy as np
 import math
 
-st.header('**Sucker Rod Pump**')
+st.header('**Sucker Rod Pump **')
 
 wellName = st.selectbox('Well:', ('A'))
 
