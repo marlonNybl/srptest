@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'srp-system'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8973AFD9354C4B31813F65DFAFC44D8F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3BB2717CA086496CA3061C999C9F7777 }}
