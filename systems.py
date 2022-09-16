@@ -83,12 +83,15 @@ if uploaded_file is not None:
     st.write(dataframe)
 
     # Estimate of 'Geometric Load vector'
-    dataframe['Load_1(lbs)'] = dataframe['Geometric Load']-811.9
+    dataframe['Load_1(lbs)'] = round(dataframe['Geometric Load']-811.9,3)
+
+    
 
     # Estimate of 'area vector'
-    dataframe['area'] = abs(dataframe['pos(in)']) * \
-        abs(dataframe['Geometric Load'])
+    dataframe['area'] = round(abs(dataframe['pos(in)']) * \
+        abs(dataframe['Geometric Load']),3)
 
+    
     # Estimate of 'direction vector'
     difpos = dataframe['pos(in)']-dataframe['pos(in)'].shift(1)
 
@@ -123,6 +126,8 @@ if uploaded_file is not None:
 
     dataframe['Change of Dir count'] = cdc
 
+    
+
     # Estimate of 'Stop row'
     srow = []
     srow.append('')
@@ -142,8 +147,9 @@ if uploaded_file is not None:
 
     st.subheader('**Results**')
 
-    #st.write(dataframe)
+    st.write(dataframe.astype(str))
 
+    
     num = 0 + 1
     for x in range(2, len(difpos)):
         if srow[x] == 0:
@@ -228,7 +234,8 @@ if uploaded_file is not None:
             segment.append(0)
 
     dataframe['Segment'] = segment
-    #st.write(dataframe)
+    
+    st.write(dataframe.astype(str))
 
     dfFilter = pd.DataFrame()
     dfFilter['pos(in)'] = posFilter
