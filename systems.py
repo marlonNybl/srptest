@@ -39,7 +39,7 @@ barrelsTable = [
 
 df = pd.DataFrame(barrelsTable, columns=['Nomenclature', 'Basic bore (in)'])
 
-st.table(df)
+#st.table(df)
 
 SurfaceMaxStroke = int(int(surfaceUnit[-3:])/12)
 
@@ -147,7 +147,7 @@ if uploaded_file is not None:
 
     st.subheader('**Results**')
 
-    st.write(dataframe.astype(str))
+    #st.write(dataframe.astype(str))
 
     
     num = 0 + 1
@@ -193,12 +193,12 @@ if uploaded_file is not None:
 
     # Estimate of 'Strokes'
     StrokeBottom = perDF['Pos.'][len(percentiles)-1]
-    col1.info('Stroke bottom: ' + str(StrokeBottom))
+    #col1.info('Stroke bottom: ' + str(StrokeBottom))
     StrokeTop = perDF['Pos.'][0]
-    col2.info('Stroke top: ' + str(StrokeTop))
+    #col2.info('Stroke top: ' + str(StrokeTop))
     DownholeStrokeLength = StrokeTop-StrokeBottom
     dsl = DownholeStrokeLength
-    col1.info('Downhole stroke length: ' + str(DownholeStrokeLength))
+    #col1.info('Downhole stroke length: ' + str(DownholeStrokeLength))
 
     # Estimate of 'SPM vector'
     spm = []
@@ -216,8 +216,8 @@ if uploaded_file is not None:
 
     averageSPM = np.mean(spmFilter)
 
-    col1.info('Load displacement: ' + str(min(load_1Filter)))
-    col2.info('Average SPM: ' + str(round(averageSPM, 1)))
+    #col1.info('Load displacement: ' + str(min(load_1Filter)))
+    #col2.info('Average SPM: ' + str(round(averageSPM, 1)))
 
    # Estimate of 'Segment'
     gl_p85 = perDF['Geometric Load'][2]
@@ -235,7 +235,7 @@ if uploaded_file is not None:
 
     dataframe['Segment'] = segment
     
-    st.write(dataframe.astype(str))
+    #st.write(dataframe.astype(str))
 
     dfFilter = pd.DataFrame()
     dfFilter['pos(in)'] = posFilter
@@ -255,13 +255,13 @@ if uploaded_file is not None:
 
     row_sp = row_pp-int(poundPointLB)
 
-    st.subheader('**Pound curve analysis**')
+    #st.subheader('**Pound curve analysis**')
 
     col1, col2 = st.columns(2)
 
     startPoint = dataframe['pos(in)'][row_sp]
-    col1.info('Start point: ' + str(startPoint))
-    col2.info('Pound point: ' + str(poundPoint))
+    #col1.info('Start point: ' + str(startPoint))
+    #col2.info('Pound point: ' + str(poundPoint))
 
     # Estimate of 'Incidence slope'
     ys = []
@@ -271,14 +271,14 @@ if uploaded_file is not None:
         xs.append(dataframe['pos(in)'][x])
 
     slope, intercept = np.polyfit(xs, ys, 1)
-    col1.info('Incidence slope: ' + str(round(slope, 5)))
+    #col1.info('Incidence slope: ' + str(round(slope, 5)))
 
     # Estimate of 'Incidence angle'
     incidenceAngle = round(math.degrees(math.atan(slope)), 5)
-    col2.info('Incidence angle: ' + str(incidenceAngle))
+    #col2.info('Incidence angle: ' + str(incidenceAngle))
 
     pumpFillage = round((poundPoint-StrokeBottom)/(StrokeTop-StrokeBottom), 5)
-    col1.info('Pump fillage: ' + str(pumpFillage))
+    #col1.info('Pump fillage: ' + str(pumpFillage))
 
     st.subheader('**RTTF Calculation**')
 
